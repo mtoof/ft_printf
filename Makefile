@@ -6,7 +6,7 @@
 #    By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/12 08:54:34 by mtoof             #+#    #+#              #
-#    Updated: 2023/04/03 18:12:56 by mtoof            ###   ########.fr        #
+#    Updated: 2023/04/03 18:15:53 by mtoof            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ $(OBJS): $(OBJ_DIR)%.o: %.c | obj_dir
 
 clean:
 	make clean -C ./libft
-	/bin/rm -f $(SRC:.c=.o)
+	rm -rf $(OBJ_DIR)
 
 fclean: clean
 	make fclean -C ./libft
