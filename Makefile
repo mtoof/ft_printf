@@ -6,7 +6,7 @@
 #    By: mtoof <mtoof@student.hive.fi>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/12 08:54:34 by mtoof             #+#    #+#              #
-#    Updated: 2023/04/03 18:15:53 by mtoof            ###   ########.fr        #
+#    Updated: 2023/04/05 17:21:16 by mtoof            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,17 +22,17 @@ HEADER = header/
 FLAGS = -Wall -Werror -Wextra
 LIBFT_LIB = ./libft/libft.a 
 
-OBJS = $(SRC:%.c=$(OBJ_DIR)%.o)
+OBJ = $(SRC:%.c=$(OBJ_DIR)%.o)
 
 .PHONY: obj_dir
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJ)
 	make all -C ./libft/
 	ar rcs $(LIBFT_LIB) $@ $? 
 
-$(OBJS): $(OBJ_DIR)%.o: %.c | obj_dir
+$(OBJ): $(OBJ_DIR)%.o: %.c | obj_dir
 	cc $(FLAGS) -I$(HEADER) -c -o $@ $<
 
 clean:
@@ -40,8 +40,8 @@ clean:
 	rm -rf $(OBJ_DIR)
 
 fclean: clean
-	make fclean -C ./libft
-	/bin/rm -f $(NAME)
+	rm -f $(LIBFT_LIB)
+	rm -f $(NAME)
 
 re: fclean all
 
