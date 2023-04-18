@@ -30,7 +30,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	make all -C ./libft/
-	ar rcs $(LIBFT_LIB) $@ $? 
+	ar rcs $@ $? $(LIBFT_LIB)
 
 $(OBJ): $(OBJ_DIR)%.o: %.c | obj_dir
 	cc $(FLAGS) -I$(HEADER) -c -o $@ $<
